@@ -1,18 +1,22 @@
-# AI Pop Optimizer - staticheskie modifikatory (imena provereny po 4.5.1)
+# AI Pop Optimizer - static modifiers (names verified against 4.5.1
+# game logs; structure/icons follow vanilla 00_static_modifiers.txt)
 
-# Zamorozka rosta na perepolnennoy II-planete.
-# planet_pop_assembly_mult - sborka popov (4.x: edinyy modifikator,
-# razdeleniya organic/mechanical bolshe net).
-# bonus_pop_growth_mult - mnozhitel bonusnogo rosta organiki.
+# Growth freeze on an over-cap AI planet.
+# All three modifiers confirmed in vanilla per_neighbor_rival block:
+# logistic_growth_mult / planet_pop_assembly_mult / bonus_pop_growth_mult.
 apo_pop_growth_freeze = {
+	logistic_growth_mult = -1.0
 	planet_pop_assembly_mult = -1.0
 	bonus_pop_growth_mult = -1.0
+	icon = "gfx/interface/icons/planet_modifiers/pm_planet_from_space.dds"
+	icon_frame = 3
 }
 
-# Tryohurovnevaya kompensatsiya ekonomiki II (vzamen ogranichennyh popov).
-# Vmesto nesuschestvuyuschego all_jobs_produce_mult ispolzuem
-# proverennye stranovye modifikatory proizvodstva po resursam.
-# pop_workforce_mult - kazhdyy pop II dayot bolshe workforce.
+# Three-tier AI economy compensation (in place of capped pops).
+# country_*_produces_mult are vanilla country-scope modifiers
+# (cf. federation_tax, maneuvers_no_protest); pop_workforce_mult is a
+# Pops-category modifier (per 4.5.1 game_modifiers.log) that works from
+# country scope as well.
 apo_ai_econ_comp_1 = {
 	pop_workforce_mult = 0.10
 	country_food_produces_mult = 0.10
@@ -21,6 +25,7 @@ apo_ai_econ_comp_1 = {
 	country_consumer_goods_produces_mult = 0.10
 	country_alloys_produces_mult = 0.10
 	country_unity_produces_mult = 0.10
+	icon = "gfx/interface/icons/modifiers/mod_country_insult_efficiency.dds"
 }
 
 apo_ai_econ_comp_2 = {
@@ -31,6 +36,8 @@ apo_ai_econ_comp_2 = {
 	country_consumer_goods_produces_mult = 0.20
 	country_alloys_produces_mult = 0.20
 	country_unity_produces_mult = 0.20
+	icon = "gfx/interface/icons/modifiers/mod_country_insult_efficiency.dds"
+	icon_frame = 2
 }
 
 apo_ai_econ_comp_3 = {
@@ -41,4 +48,6 @@ apo_ai_econ_comp_3 = {
 	country_consumer_goods_produces_mult = 0.30
 	country_alloys_produces_mult = 0.30
 	country_unity_produces_mult = 0.30
+	icon = "gfx/interface/icons/modifiers/mod_country_insult_efficiency.dds"
+	icon_frame = 3
 }
