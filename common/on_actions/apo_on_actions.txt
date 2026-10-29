@@ -1,8 +1,9 @@
-# AI Pop Optimizer - event hooks (4.x flat list format)
-on_monthly_pulse = {
+# AI Pop Optimizer - event hooks (4.x; per-country pulse hooks give
+# the country scope that country_event requires)
+on_monthly_pulse_country = {
 	events = { apo.1 }
 }
 
-on_yearly_pulse = {
+on_yearly_pulse_country = {
 	events = { apo.2 }
 }
