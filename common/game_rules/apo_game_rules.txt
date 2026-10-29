@@ -1,55 +1,11 @@
-# AI Pop Optimizer - limit sub-vidov II (uzhestochenie vanilnogo pravila).
-#
-# V 4.x lag porozhdayut POP-GRUPPY (vid x strata x etika x fraktsiya).
-# Kazhdyy sub-vid, kotoryy II sozdayot gennomodifikatsiey, umnozhaet
-# chislo grupp na vseh ego planetah. Vanilla uzhe ogranichivaet II
-# pravilom can_modify_species (porogi 3 i 6 sub-vidov); my uzhestochaem
-# ih do 2 i 4. Vetki dlya igroka (is_ai = no) ne tronuty.
-# Struktura skopirovana iz vanilnogo common/game_rules/00_rules.txt
-# (damp UPP 4.x), izmeneny tolko dva chisla.
+# AI Pop Optimizer - can_modify_species (vanilla 4.5.2) + AI sub-species cap.
+# The rule body below is copied verbatim from the user's vanilla
+# 00_rules.txt (4.5.2); the ONLY addition is the final if-block that
+# caps how many sub-species an AI empire may create via gene modding
+# (fewer sub-species = fewer pop groups = the actual 4.x lag unit).
+# Player empires (is_ai = no) are completely unaffected.
 
 can_modify_species = {
-	root.owner = {
-		OR = {
-			is_ai = no
-			is_synthetic_empire = yes
-			count_exact_species = {
-				count < 2
-				limit = {
-					OR = {
-						is_same_species = prevprev
-						is_subspecies = prevprev
-					}
-					NOT = { has_trait = trait_self_modified }
-				}
-			}
-			AND = {
-				owner_species = { is_same_species = prevprev }
-				OR = {
-					has_ascension_perk = ap_engineered_evolution
-					has_ascension_perk = ap_the_flesh_is_weak
-				}
-			}
-			AND = {
-				OR = {
-					owner_species = { is_same_species = prevprev }
-					has_ascension_perk = ap_engineered_evolution
-					has_ascension_perk = ap_the_flesh_is_weak
-				}
-				has_technology = tech_gene_expressions
-				count_exact_species = {
-					count < 4
-					limit = {
-						OR = {
-							is_same_species = prevprev
-							is_subspecies = prevprev
-						}
-						NOT = { has_trait = trait_self_modified }
-					}
-				}
-			}
-		}
-	}
 	# Can't modify root Species during Ascension Situations
 	if = {
 		limit = {
@@ -164,6 +120,26 @@ can_modify_species = {
 		fail_text = "CANNOT_MODIFY_MALLEABLE_GENES_SPECIES"
 		NOT = {
 			has_trait = trait_malleable_genes
+		}
+	}
+	# AI Pop Optimizer: AI sub-species cap (fewer pop groups = less lag).
+	# Vanilla 4.5.2 has NO AI cap here; we add one. Player unaffected.
+	if = {
+		limit = {
+			ROOT = { is_ai = yes }
+			NOT = { is_same_species = ROOT.owner.species }
+		}
+		ROOT = {
+			count_exact_species = {
+				count < 2
+				limit = {
+					OR = {
+						is_same_species = prev.owner.species
+						is_subspecies = prev.owner.species
+					}
+					NOT = { has_trait = trait_self_modified }
+				}
+			}
 		}
 	}
 }

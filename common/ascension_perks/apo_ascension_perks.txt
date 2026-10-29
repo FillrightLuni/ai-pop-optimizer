@@ -1,15 +1,8 @@
-# AI Pop Optimizer - otklyuchenie ksenosovmestimosti u II.
-#
-# V 4.0 ksenosovmestimost bolshe NE sozdayot gibridnye vidy (paradox
-# ubrali eto radi proizvoditelnosti), tak chto sama mehanika teper
-# bezvredna dlya FPS. Odnako perk vsyo eschyo dayot II vzryvnoy rost popov
-# (+33% immigration pull + obedinyonnyy rost vseh vidov na planete),
-# chto razduvaet chislo popov II - nashu glavnuyu tsel snizheniya nagruzki.
-#
-# Reshenie: tochechnyy override perka ap_xeno_compatibility s obnulyonnym
-# ai_weight. Igroku perk polnostyu dostupen (potential/possible/modifier
-# sohraneny vanilnymi), II ego nikogda ne vozmyot.
-# Struktura sverena s vanilnym common/ascension_perks/00_ascension_perks.txt.
+# AI Pop Optimizer - AI never picks Xeno-Compatibility.
+# Vanilla perk (4.5.2, user-provided dump) with ai_weight zeroed:
+# vanilla was factor = 10 (+x2 xenophile, +3 fanatic xenophile).
+# Player keeps full access; in 4.0+ the perk no longer creates hybrid
+# species but still grants AI explosive pop growth via pooled growth.
 
 ap_xeno_compatibility = {
 	potential = {
@@ -18,16 +11,23 @@ ap_xeno_compatibility = {
 			has_ascension_perk = ap_xeno_compatibility
 		}
 		is_regular_empire = yes
+		is_wilderness_empire = no
 	}
 
 	modifier = {
-		planet_immigration_pull_mult = 0.33
+		planet_resettlement_unemployed_destination_mult = 0.33
+		refugee_attraction = 1
+		add_attunement_the_composer_of_strands = @ascension_perk_attunement1
 	}
 
 	possible = {
 		custom_tooltip = {
+			fail_text = "requires_xenophile"
+			is_xenophile = yes
+		}
+		custom_tooltip = {
 			fail_text = "requires_xeno_species"
-			any_owned_pop = {
+			any_owned_pop_group = {
 				NOR = {
 					is_same_species = root.owner
 					has_trait = trait_mechanical
@@ -46,8 +46,6 @@ ap_xeno_compatibility = {
 		custom_tooltip = "allow_crossbreeding"
 	}
 
-	# NAShA PRAVKA: vanilnyy ai_weight (factor = 10, bonusy ksenofilam)
-	# zamenyon na 0 - II perk ne beryot.
 	ai_weight = {
 		factor = 0
 	}
