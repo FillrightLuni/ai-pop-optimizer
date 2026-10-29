@@ -1,12 +1,8 @@
-# AI Pop Optimizer - event hooks
+# AI Pop Optimizer - event hooks (4.x flat list format)
 on_monthly_pulse = {
-	events = [
-		{ event = apo.1 }
-	]
+	events = { apo.1 }
 }
 
 on_yearly_pulse = {
-	events = [
-		{ event = apo.2 }
-	]
+	events = { apo.2 }
 }
