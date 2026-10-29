@@ -1,4 +1,4 @@
-AI Pop Optimizer — All in One (v0.4.0, Stellaris 4.5)
+﻿AI Pop Optimizer — All in One (v0.4.0, Stellaris 4.5)
 =====================================================
 
 Что делает мод

@@ -1,4 +1,4 @@
-l_english:
+﻿l_english:
  apo_pop_growth_freeze:0 "Population Cap Reached"
  apo_pop_growth_freeze_desc:0 "This planet has reached the population cap imposed by the AI Pop Optimizer. Growth is frozen."
  apo_ai_econ_comp_1:0 "Optimized Economy I"

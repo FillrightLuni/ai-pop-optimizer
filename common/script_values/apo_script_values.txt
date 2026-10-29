@@ -1,4 +1,4 @@
-# AI Pop Optimizer — фильтр спама хабитатов ИИ.
+﻿# AI Pop Optimizer — фильтр спама хабитатов ИИ.
 #
 # В 4.x ванилла УЖЕ ограничивает число хабитатов ИИ через script_value
 # ai_habitat_cap (используется в hidden_trigger файла

@@ -1,4 +1,4 @@
-# AI Pop Optimizer — события (namespace обязателен)
+﻿# AI Pop Optimizer — события (namespace обязателен)
 namespace = apo
 
 # Ежемесячный пульс: обходим колонии ИИ (триггерится из on_actions)

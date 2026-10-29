@@ -1,4 +1,4 @@
-# AI Pop Optimizer — scripted triggers (проверено по 4.5.1 game logs)
+﻿# AI Pop Optimizer — scripted triggers (проверено по 4.5.1 game logs)
 
 # Страна — ИИ (не игрок)
 apo_is_ai_country = {
