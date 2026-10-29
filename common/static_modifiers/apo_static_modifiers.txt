@@ -1,24 +1,44 @@
-# AI Pop Optimizer — статические модификаторы
+# AI Pop Optimizer — статические модификаторы (имена проверены по 4.5.1)
 
-# Заморозка роста на переполненной ИИ-планете
+# Заморозка роста на переполненной ИИ-планете.
+# planet_pop_assembly_mult — сборка попов (4.x: единый модификатор,
+# разделения organic/mechanical больше нет).
+# bonus_pop_growth_mult — множитель бонусного роста органики.
 apo_pop_growth_freeze = {
-	planet_pop_growth_speed = -1.0
-	planet_pop_assembly_organic_mult = -1.0
-	planet_pop_assembly_mechanical_mult = -1.0
+	planet_pop_assembly_mult = -1.0
+	bonus_pop_growth_mult = -1.0
 }
 
-# Трёхуровневая компенсация экономики ИИ (взамен ограниченных попов)
+# Трёхуровневая компенсация экономики ИИ (взамен ограниченных попов).
+# Вместо несуществующего all_jobs_produce_mult используем
+# проверенные страновые модификаторы производства по ресурсам.
+# pop_workforce_mult — каждый поп ИИ даёт больше workforce.
 apo_ai_econ_comp_1 = {
-	all_jobs_produce_mult = 0.10
-	pop_upkeep_mult = -0.10
+	pop_workforce_mult = 0.10
+	country_food_produces_mult = 0.10
+	country_minerals_produces_mult = 0.10
+	country_energy_produces_mult = 0.10
+	country_consumer_goods_produces_mult = 0.10
+	country_alloys_produces_mult = 0.10
+	country_unity_produces_mult = 0.10
 }
 
 apo_ai_econ_comp_2 = {
-	all_jobs_produce_mult = 0.20
-	pop_upkeep_mult = -0.20
+	pop_workforce_mult = 0.20
+	country_food_produces_mult = 0.20
+	country_minerals_produces_mult = 0.20
+	country_energy_produces_mult = 0.20
+	country_consumer_goods_produces_mult = 0.20
+	country_alloys_produces_mult = 0.20
+	country_unity_produces_mult = 0.20
 }
 
 apo_ai_econ_comp_3 = {
-	all_jobs_produce_mult = 0.30
-	pop_upkeep_mult = -0.30
+	pop_workforce_mult = 0.30
+	country_food_produces_mult = 0.30
+	country_minerals_produces_mult = 0.30
+	country_energy_produces_mult = 0.30
+	country_consumer_goods_produces_mult = 0.30
+	country_alloys_produces_mult = 0.30
+	country_unity_produces_mult = 0.30
 }

@@ -1,12 +1,17 @@
-# AI Pop Optimizer — scripted triggers
+# AI Pop Optimizer — scripted triggers (проверено по 4.5.1 game logs)
 
 # Страна — ИИ (не игрок)
 apo_is_ai_country = {
 	is_ai = yes
 }
 
-# Планета ИИ, где число попов превысило кэп.
+# Планета ИИ, где суммарное число попов превысило кэп.
+# 4.x: попы масштабированы x100; 20000 ≈ 200 попов старой (3.x) системы.
+# ВАЖНО: используется count_owned_pop_amount (sums all pop amounts),
+# так как триггера pop_count в 4.5 не существует.
 # Кэп настраивается здесь (перекалибровка = правка одной цифры).
 apo_is_over_pop_cap = {
-	pop_count > 200
+	count_owned_pop_amount = {
+		count > 20000
+	}
 }

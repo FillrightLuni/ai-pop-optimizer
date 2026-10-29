@@ -1,16 +1,17 @@
-# AI Pop Optimizer — события
-# namespace обязателен, иначе event id не резолвится в on_actions
+# AI Pop Optimizer — события (namespace обязателен)
 namespace = apo
 
-# Ежемесячный пульс: обходим планеты ИИ (триггерится из on_actions)
+# Ежемесячный пульс: обходим колонии ИИ (триггерится из on_actions)
 apo.1 = {
 	hidden = yes
 	is_triggered_only = yes
 
 	immediate = {
-		every_planet = {
-			limit = { owner = { apo_is_ai_country = yes } }
-			apo_monthly_planet_check = yes
+		every_country = {
+			limit = { apo_is_ai_country = yes }
+			every_owned_colony = {
+				apo_monthly_planet_check = yes
+			}
 		}
 	}
 }

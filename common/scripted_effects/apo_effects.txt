@@ -1,8 +1,10 @@
-# AI Pop Optimizer — scripted effects
+# AI Pop Optimizer — scripted effects (синтаксис проверен по 4.5.1)
 
-# Ежемесячная проверка планеты ИИ: если попов > cap → заморозить рост,
-# если ниже cap → снять заморозку (распространённая ошибка старых модов:
-# модификатор вешался навсегда и ИИ навсегда переставал расти)
+# Ежемесячная проверка колонии ИИ: если попов > cap → заморозить рост,
+# если ниже cap → снять заморозку (ошибка старых модов: модификатор
+# вешался навсегда и ИИ навсегда переставал расти).
+# Используем every_owned_colony (актуальный итератор 4.x,
+# every_planet deprecated).
 apo_monthly_planet_check = {
 	if = {
 		limit = {
@@ -18,26 +20,22 @@ apo_monthly_planet_check = {
 	}
 }
 
-# Пересчёт компенсации экономики ИИ (раз в год, чтобы не грузить тик).
-# Ключевая идея мода: ИИ с ограниченными попами НЕ слабеет —
-# недобор производства компенсируется тировыми модификаторами.
+# Пересчёт компенсации экономики ИИ (раз в год).
+# num_owned_colonies — проверенный триггер 4.5 (num_planets не существует).
 apo_recalculate_ai_compensation = {
+	remove_modifier = apo_ai_econ_comp_1
+	remove_modifier = apo_ai_econ_comp_2
+	remove_modifier = apo_ai_econ_comp_3
 	if = {
-		limit = { apo_is_ai_country = yes }
-		remove_modifier = apo_ai_econ_comp_1
-		remove_modifier = apo_ai_econ_comp_2
-		remove_modifier = apo_ai_econ_comp_3
-		if = {
-			limit = { num_planets >= 20 }
-			add_modifier = { modifier = apo_ai_econ_comp_3 days = -1 }
-		}
-		else_if = {
-			limit = { num_planets >= 10 }
-			add_modifier = { modifier = apo_ai_econ_comp_2 days = -1 }
-		}
-		else_if = {
-			limit = { num_planets >= 3 }
-			add_modifier = { modifier = apo_ai_econ_comp_1 days = -1 }
-		}
+		limit = { num_owned_colonies >= 20 }
+		add_modifier = { modifier = apo_ai_econ_comp_3 days = -1 }
+	}
+	else_if = {
+		limit = { num_owned_colonies >= 10 }
+		add_modifier = { modifier = apo_ai_econ_comp_2 days = -1 }
+	}
+	else_if = {
+		limit = { num_owned_colonies >= 3 }
+		add_modifier = { modifier = apo_ai_econ_comp_1 days = -1 }
 	}
 }

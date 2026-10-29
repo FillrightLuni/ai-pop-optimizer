@@ -1,11 +1,26 @@
-# AI Pop Optimizer — калибровочные константы
+# AI Pop Optimizer — калибровочные константы (справочно)
 # ВАЖНО: кастомные defines НЕ видны из триггеров/эффектов Stellaris —
-# это справочный файл для разработчика мода. Действующие цифры живут в:
-#   common/scripted_triggers/apo_triggers.txt   (кэп попов: count > N)
+# это справочный файл. Действующие цифры живут в:
+#   common/scripted_triggers/apo_triggers.txt       (кэп попов)
 #   common/static_modifiers/apo_static_modifiers.txt (бонусы компенсации)
-#   common/scripted_effects/apo_effects.txt      (пороги числа планет)
+#   common/scripted_effects/apo_effects.txt         (пороги колоний)
 
-APO_POP_CAP = 200
-APO_COMP_TIER1_PLANETS = 3
-APO_COMP_TIER2_PLANETS = 10
-APO_COMP_TIER3_PLANETS = 20
+# Кэп попов на ИИ-планете (4.x: попы масштабированы x100;
+# 20000 = эквивалент ~200 попов старой системы 3.x)
+APO_POP_CAP = 20000
+
+# Пороги компенсации (число колоний; триггер num_owned_colonies)
+APO_COMP_TIER1_COLONIES = 3
+APO_COMP_TIER2_COLONIES = 10
+APO_COMP_TIER3_COLONIES = 20
+
+# ФАКТЫ 4.x (dev diary #370/#372), учтённые в дизайне:
+# - Поп-группы (вид x страта x этика x фракция) — единица расчёта.
+#   Одна группа ДОРОЖЕ одного попа старой системы: лаг зависит от
+#   ЧИСЛА ГРУПП, а не от числа попов.
+# - Ксеносовместимость в 4.0 больше НЕ создаёт гибридов —
+#   этот компонент плана устарел, не реализуем.
+# - Имена триггеров/модификаторов сверены с автогенерированными
+#   логами клиента 4.5.1 (OldEnt/stellaris-triggers-modifiers-effects-list):
+#   count_owned_pop_amount, num_owned_colonies, planet_pop_assembly_mult,
+#   bonus_pop_growth_mult, pop_workforce_mult, country_*_produces_mult.
