@@ -1,15 +1,15 @@
-﻿# AI Pop Optimizer — отключение ксеносовместимости у ИИ.
+# AI Pop Optimizer - otklyuchenie ksenosovmestimosti u II.
 #
-# В 4.0 ксеносовместимость больше НЕ создаёт гибридные виды (парadox
-# убрали это ради производительности), так что сама механика теперь
-# безвредна для FPS. Однако перк всё ещё даёт ИИ взрывной рост попов
-# (+33% immigration pull + объединённый рост всех видов на планете),
-# что раздувает число попов ИИ — нашу главную цель снижения нагрузки.
+# V 4.0 ksenosovmestimost bolshe NE sozdayot gibridnye vidy (paradox
+# ubrali eto radi proizvoditelnosti), tak chto sama mehanika teper
+# bezvredna dlya FPS. Odnako perk vsyo eschyo dayot II vzryvnoy rost popov
+# (+33% immigration pull + obedinyonnyy rost vseh vidov na planete),
+# chto razduvaet chislo popov II - nashu glavnuyu tsel snizheniya nagruzki.
 #
-# Решение: точечный override перка ap_xeno_compatibility с обнулённым
-# ai_weight. Игроку перк полностью доступен (potential/possible/modifier
-# сохранены ванильными), ИИ его никогда не возьмёт.
-# Структура сверена с ванильным common/ascension_perks/00_ascension_perks.txt.
+# Reshenie: tochechnyy override perka ap_xeno_compatibility s obnulyonnym
+# ai_weight. Igroku perk polnostyu dostupen (potential/possible/modifier
+# sohraneny vanilnymi), II ego nikogda ne vozmyot.
+# Struktura sverena s vanilnym common/ascension_perks/00_ascension_perks.txt.
 
 ap_xeno_compatibility = {
 	potential = {
@@ -46,8 +46,8 @@ ap_xeno_compatibility = {
 		custom_tooltip = "allow_crossbreeding"
 	}
 
-	# НАША ПРАВКА: ванильный ai_weight (factor = 10, бонусы ксенофилам)
-	# заменён на 0 — ИИ перк не берёт.
+	# NAShA PRAVKA: vanilnyy ai_weight (factor = 10, bonusy ksenofilam)
+	# zamenyon na 0 - II perk ne beryot.
 	ai_weight = {
 		factor = 0
 	}

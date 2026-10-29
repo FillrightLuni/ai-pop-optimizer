@@ -1,7 +1,7 @@
-﻿# AI Pop Optimizer — события (namespace обязателен)
+# AI Pop Optimizer - events (namespace is required)
 namespace = apo
 
-# Ежемесячный пульс: обходим колонии ИИ (триггерится из on_actions)
+# Monthly pulse: iterate AI colonies (fired from on_actions)
 apo.1 = {
 	hidden = yes
 	is_triggered_only = yes
@@ -16,7 +16,7 @@ apo.1 = {
 	}
 }
 
-# Ежегодный пересчёт компенсации экономики ИИ
+# Yearly recalculation of AI economy compensation
 apo.2 = {
 	hidden = yes
 	is_triggered_only = yes

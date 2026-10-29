@@ -1,20 +1,20 @@
-﻿# AI Pop Optimizer — фильтр спама хабитатов ИИ.
+# AI Pop Optimizer - filtr spama habitatov II.
 #
-# В 4.x ванилла УЖЕ ограничивает число хабитатов ИИ через script_value
-# ai_habitat_cap (используется в hidden_trigger файла
-# common/megastructures/habitats.txt). Мы НЕ переопределяем файл
-# хабитатов (это ломало бы совместимость с Gigastructures и др.) —
-# вместо этого переопределяем только script_value и снижаем потолок.
+# V 4.x vanilla UZhE ogranichivaet chislo habitatov II cherez script_value
+# ai_habitat_cap (ispolzuetsya v hidden_trigger fayla
+# common/megastructures/habitats.txt). My NE pereopredelyaem fayl
+# habitatov (eto lomalo by sovmestimost s Gigastructures i dr.) -
+# vmesto etogo pereopredelyaem tolko script_value i snizhaem potolok.
 #
-# Ниже — ванильная формула (сверена с дампами ванильного
-# 00_script_values.txt), к которой добавлена наша правка:
-#   mult = 0.5  →  потолок хабитатов ИИ вдвое ниже ванильного
-# при сохранении ванильного скейла от размера галактики и сложности.
+# Nizhe - vanilnaya formula (sverena s dampami vanilnogo
+# 00_script_values.txt), k kotoroy dobavlena nasha pravka:
+#   mult = 0.5  ->  potolok habitatov II vdvoe nizhe vanilnogo
+# pri sohranenii vanilnogo skeyla ot razmera galaktiki i slozhnosti.
 
 ai_habitat_cap = {
 	base = 0
 
-	# Размер галактики (ванильные значения)
+	# Razmer galaktiki (vanilnye znacheniya)
 	modifier = {
 		set = 2
 		galaxy_size = tiny
@@ -40,13 +40,13 @@ ai_habitat_cap = {
 		galaxy_size = huge
 	}
 
-	# НАША ПРАВКА: вдвое ниже ванильного потолка.
-	# Калибровка: 0.5 = мягко, 0.33 = агрессивно, 0 = полный запрет.
+	# NAShA PRAVKA: vdvoe nizhe vanilnogo potolka.
+	# Kalibrovka: 0.5 = myagko, 0.33 = agressivno, 0 = polnyy zapret.
 	modifier = {
 		factor = 0.5
 	}
 
-	# Сложность (ванильные множители)
+	# Slozhnost (vanilnye mnozhiteli)
 	modifier = {
 		divide = 2
 		is_difficulty = 0
@@ -81,7 +81,7 @@ ai_habitat_cap = {
 		is_difficulty = 6
 	}
 
-	# Void Dwellers сохраняют двойной кэп (их архетип)
+	# Void Dwellers sohranyayut dvoynoy kep (ih arhetip)
 	modifier = {
 		factor = 2
 		has_void_dweller_origin = yes

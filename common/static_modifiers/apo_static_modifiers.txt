@@ -1,18 +1,18 @@
-﻿# AI Pop Optimizer — статические модификаторы (имена проверены по 4.5.1)
+# AI Pop Optimizer - staticheskie modifikatory (imena provereny po 4.5.1)
 
-# Заморозка роста на переполненной ИИ-планете.
-# planet_pop_assembly_mult — сборка попов (4.x: единый модификатор,
-# разделения organic/mechanical больше нет).
-# bonus_pop_growth_mult — множитель бонусного роста органики.
+# Zamorozka rosta na perepolnennoy II-planete.
+# planet_pop_assembly_mult - sborka popov (4.x: edinyy modifikator,
+# razdeleniya organic/mechanical bolshe net).
+# bonus_pop_growth_mult - mnozhitel bonusnogo rosta organiki.
 apo_pop_growth_freeze = {
 	planet_pop_assembly_mult = -1.0
 	bonus_pop_growth_mult = -1.0
 }
 
-# Трёхуровневая компенсация экономики ИИ (взамен ограниченных попов).
-# Вместо несуществующего all_jobs_produce_mult используем
-# проверенные страновые модификаторы производства по ресурсам.
-# pop_workforce_mult — каждый поп ИИ даёт больше workforce.
+# Tryohurovnevaya kompensatsiya ekonomiki II (vzamen ogranichennyh popov).
+# Vmesto nesuschestvuyuschego all_jobs_produce_mult ispolzuem
+# proverennye stranovye modifikatory proizvodstva po resursam.
+# pop_workforce_mult - kazhdyy pop II dayot bolshe workforce.
 apo_ai_econ_comp_1 = {
 	pop_workforce_mult = 0.10
 	country_food_produces_mult = 0.10

@@ -1,12 +1,12 @@
-﻿# AI Pop Optimizer — лимит суб-видов ИИ (ужесточение ванильного правила).
+# AI Pop Optimizer - limit sub-vidov II (uzhestochenie vanilnogo pravila).
 #
-# В 4.x лаг порождают ПОП-ГРУППЫ (вид x страта x этика x фракция).
-# Каждый суб-вид, который ИИ создаёт генномодификацией, умножает
-# число групп на всех его планетах. Ванилла уже ограничивает ИИ
-# правилом can_modify_species (пороги 3 и 6 суб-видов); мы ужесточаем
-# их до 2 и 4. Ветки для игрока (is_ai = no) не тронуты.
-# Структура скопирована из ванильного common/game_rules/00_rules.txt
-# (дамп UPP 4.x), изменены только два числа.
+# V 4.x lag porozhdayut POP-GRUPPY (vid x strata x etika x fraktsiya).
+# Kazhdyy sub-vid, kotoryy II sozdayot gennomodifikatsiey, umnozhaet
+# chislo grupp na vseh ego planetah. Vanilla uzhe ogranichivaet II
+# pravilom can_modify_species (porogi 3 i 6 sub-vidov); my uzhestochaem
+# ih do 2 i 4. Vetki dlya igroka (is_ai = no) ne tronuty.
+# Struktura skopirovana iz vanilnogo common/game_rules/00_rules.txt
+# (damp UPP 4.x), izmeneny tolko dva chisla.
 
 can_modify_species = {
 	root.owner = {

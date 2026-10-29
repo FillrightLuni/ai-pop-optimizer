@@ -1,75 +1,75 @@
-﻿AI Pop Optimizer — All in One (v0.4.0, Stellaris 4.5)
+AI Pop Optimizer - All in One (v0.4.0, Stellaris 4.5)
 =====================================================
 
-Что делает мод
+Chto delaet mod
 ---------------
-Единый performance-мод, который ограничивает рост попов у ИИ и при этом
-НЕ ОСЛАБЛЯЕТ ИИ (главная ошибка существующих модов):
+Edinyy performance-mod, kotoryy ogranichivaet rost popov u II i pri etom
+NE OSLABLYaET II (glavnaya oshibka suschestvuyuschih modov):
 
-1. Кэп попов на колониях ИИ. При превышении — рост органики
-   (bonus_pop_growth_mult) и сборка (planet_pop_assembly_mult)
-   замораживаются; при падении ниже кэпа заморозка снимается
-   автоматически (в отличие от старых модов, где заморозка была вечной).
-2. Компенсация экономики ИИ: в зависимости от числа колоний ИИ получает
-   тировый бонус (+10/20/30%): pop_workforce_mult (каждый поп даёт
-   больше workforce) + country_*_produces_mult по ключевым ресурсам
-   (еда, минералы, энергия, потртовары, сплавы, единство).
-3. Ксеносовместимость: ИИ больше не берёт этот перк (ai_weight = 0).
-   Игроку перк полностью доступен. В 4.0 гибридов больше нет, но перк
-   даёт ИИ взрывной рост попов — источник лишней нагрузки.
-4. Лимит суб-видов ИИ: ванильное правило can_modify_species
-   ужесточено (3→2 и 6→4 суб-вида). Меньше субвидов = меньше
-   поп-групп = меньше лагов. Игрок не затронут.
-5. Фильтр спама хабитатов: переопределяем ванильный script_value
-   ai_habitat_cap (даунгрейд x0.5) — ванильная логика скейла от
-   размера галактики и сложности сохраняется, Void Dwellers
-   сохраняют двойной кэп. Совместимо с модами на хабитаты.
-6. Проверки распределены: ежемесячный пульс только по колониям ИИ,
-   пересчёт компенсации — раз в год.
+1. Kep popov na koloniyah II. Pri prevyshenii - rost organiki
+   (bonus_pop_growth_mult) i sborka (planet_pop_assembly_mult)
+   zamorazhivayutsya; pri padenii nizhe kepa zamorozka snimaetsya
+   avtomaticheski (v otlichie ot staryh modov, gde zamorozka byla vechnoy).
+2. Kompensatsiya ekonomiki II: v zavisimosti ot chisla koloniy II poluchaet
+   tirovyy bonus (+10/20/30%): pop_workforce_mult (kazhdyy pop dayot
+   bolshe workforce) + country_*_produces_mult po klyuchevym resursam
+   (eda, mineraly, energiya, potrtovary, splavy, edinstvo).
+3. Ksenosovmestimost: II bolshe ne beryot etot perk (ai_weight = 0).
+   Igroku perk polnostyu dostupen. V 4.0 gibridov bolshe net, no perk
+   dayot II vzryvnoy rost popov - istochnik lishney nagruzki.
+4. Limit sub-vidov II: vanilnoe pravilo can_modify_species
+   uzhestocheno (3->2 i 6->4 sub-vida). Menshe subvidov = menshe
+   pop-grupp = menshe lagov. Igrok ne zatronut.
+5. Filtr spama habitatov: pereopredelyaem vanilnyy script_value
+   ai_habitat_cap (daungreyd x0.5) - vanilnaya logika skeyla ot
+   razmera galaktiki i slozhnosti sohranyaetsya, Void Dwellers
+   sohranyayut dvoynoy kep. Sovmestimo s modami na habitaty.
+6. Proverki raspredeleny: ezhemesyachnyy puls tolko po koloniyam II,
+   pereschyot kompensatsii - raz v god.
 
-Важно про масштаб 4.0
+Vazhno pro masshtab 4.0
 ---------------------
-Попы в 4.x масштабированы x100. Кэп по умолчанию 20000 ≈ 200 попов
-старой (3.x) системы на планету. Перекалибровка — одна цифра в
+Popy v 4.x masshtabirovany x100. Kep po umolchaniyu 20000 ~ 200 popov
+staroy (3.x) sistemy na planetu. Perekalibrovka - odna tsifra v
 common/scripted_triggers/apo_triggers.txt.
 
-Почему это ускоряет игру
+Pochemu eto uskoryaet igru
 ------------------------
-По dev diary #370/#372 лаг в 4.x порождают ПОП-ГРУППЫ
-(вид x страта x этика x фракция), а не отдельные попы. Сокращая общее
-число попов ИИ (их в галактике большинство), мы сокращаем и число
-групп, и объём расчётов workforce. Ксеносовместимость в 4.0 больше не
-создаёт гибридов, поэтому этот пункт старых performance-гайдов
-устарел и не требуется.
+Po dev diary #370/#372 lag v 4.x porozhdayut POP-GRUPPY
+(vid x strata x etika x fraktsiya), a ne otdelnye popy. Sokraschaya obschee
+chislo popov II (ih v galaktike bolshinstvo), my sokraschaem i chislo
+grupp, i obyom raschyotov workforce. Ksenosovmestimost v 4.0 bolshe ne
+sozdayot gibridov, poetomu etot punkt staryh performance-gaydov
+ustarel i ne trebuetsya.
 
-Настройка
+Nastroyka
 ---------
-- Кэп попов: common/scripted_triggers/apo_triggers.txt (count > 20000)
-- Бонусы компенсации: common/static_modifiers/apo_static_modifiers.txt
-- Пороги колоний: common/scripted_effects/apo_effects.txt (3/10/20)
+- Kep popov: common/scripted_triggers/apo_triggers.txt (count > 20000)
+- Bonusy kompensatsii: common/static_modifiers/apo_static_modifiers.txt
+- Porogi koloniy: common/scripted_effects/apo_effects.txt (3/10/20)
 
-Совместимость
+Sovmestimost
 -------------
-- Только одиночная игра (в MP бонусы ИИ несимметричны).
-- Совместим с AI-модами (Starnet, Glavius): мод не правит AI-веса,
-  только рост попов и модификаторы экономики.
-- Работает на существующих сейвах (применяется при первом пульсе).
+- Tolko odinochnaya igra (v MP bonusy II nesimmetrichny).
+- Sovmestim s AI-modami (Starnet, Glavius): mod ne pravit AI-vesa,
+  tolko rost popov i modifikatory ekonomiki.
+- Rabotaet na suschestvuyuschih seyvah (primenyaetsya pri pervom pulse).
 
-Верификация
+Verifikatsiya
 -----------
-Все имена триггеров/эффектов/модификаторов сверены с
-автогенерированными логами клиента 4.5.1
-(OldEnt/stellaris-triggers-modifiers-effects-list). Поведение в живой
-игре не тестировалось: после первого запуска проверьте
-Documents/Paradox Interactive/Stellaris/logs/error.log на упоминания apo.
+Vse imena triggerov/effektov/modifikatorov svereny s
+avtogenerirovannymi logami klienta 4.5.1
+(OldEnt/stellaris-triggers-modifiers-effects-list). Povedenie v zhivoy
+igre ne testirovalos: posle pervogo zapuska proverte
+Documents/Paradox Interactive/Stellaris/logs/error.log na upominaniya apo.
 
-История версий
+Istoriya versiy
 --------------
-0.4.0 — Ксеносовместимость отключена у ИИ (ai_weight = 0) + лимит
-        суб-видов ИИ ужесточён (3→2, 6→4) в can_modify_species.
-0.3.0 — Фильтр спама хабитатов: override ai_habitat_cap (x0.5)
-        поверх ванильной формулы, без override файлов хабитатов.
-0.2.0 — Идентификаторы сверены с 4.5.1 (count_owned_pop_amount,
+0.4.0 - Ksenosovmestimost otklyuchena u II (ai_weight = 0) + limit
+        sub-vidov II uzhestochyon (3->2, 6->4) v can_modify_species.
+0.3.0 - Filtr spama habitatov: override ai_habitat_cap (x0.5)
+        poverh vanilnoy formuly, bez override faylov habitatov.
+0.2.0 - Identifikatory svereny s 4.5.1 (count_owned_pop_amount,
         num_owned_colonies, planet_pop_assembly_mult, pop_workforce_mult);
-        учтён масштаб попов x100 (кэп 20000).
-0.1.0 — Каркас: кэп попов ИИ + тировая компенсация экономики.
+        uchtyon masshtab popov x100 (kep 20000).
+0.1.0 - Karkas: kep popov II + tirovaya kompensatsiya ekonomiki.
