@@ -1,0 +1,33 @@
+# AI Pop Optimizer - events (vanilla 4.5.x format)
+namespace = apo
+
+# Monthly per-country pulse: check this AI country's colonies.
+# Fired by on_monthly_pulse_country (country scope provided).
+country_event = {
+	id = apo.1
+	is_triggered_only = yes
+
+	trigger = {
+		apo_is_ai_country = yes
+	}
+
+	immediate = {
+		every_owned_colony = {
+			apo_monthly_planet_check = yes
+		}
+	}
+}
+
+# Yearly per-country pulse: recalculate AI economy compensation.
+country_event = {
+	id = apo.2
+	is_triggered_only = yes
+
+	trigger = {
+		apo_is_ai_country = yes
+	}
+
+	immediate = {
+		apo_recalculate_ai_compensation = yes
+	}
+}

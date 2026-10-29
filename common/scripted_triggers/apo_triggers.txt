@@ -1,0 +1,17 @@
+# AI Pop Optimizer - scripted triggers (provereno po 4.5.1 game logs)
+
+# Strana - II (ne igrok)
+apo_is_ai_country = {
+	is_ai = yes
+}
+
+# Planeta II, gde summarnoe chislo popov prevysilo kep.
+# 4.x: popy masshtabirovany x100; 20000 ~ 200 popov staroy (3.x) sistemy.
+# VAZhNO: ispolzuetsya count_owned_pop_amount (sums all pop amounts),
+# tak kak triggera pop_count v 4.5 ne suschestvuet.
+# Kep nastraivaetsya zdes (perekalibrovka = pravka odnoy tsifry).
+apo_is_over_pop_cap = {
+	count_owned_pop_amount = {
+		count > 20000
+	}
+}
