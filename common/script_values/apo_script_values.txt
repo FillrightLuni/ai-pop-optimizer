@@ -1,0 +1,92 @@
+# AI Pop Optimizer — фильтр спама хабитатов ИИ.
+#
+# В 4.x ванилла УЖЕ ограничивает число хабитатов ИИ через script_value
+# ai_habitat_cap (используется в hidden_trigger файла
+# common/megastructures/habitats.txt). Мы НЕ переопределяем файл
+# хабитатов (это ломало бы совместимость с Gigastructures и др.) —
+# вместо этого переопределяем только script_value и снижаем потолок.
+#
+# Ниже — ванильная формула (сверена с дампами ванильного
+# 00_script_values.txt), к которой добавлена наша правка:
+#   mult = 0.5  →  потолок хабитатов ИИ вдвое ниже ванильного
+# при сохранении ванильного скейла от размера галактики и сложности.
+
+ai_habitat_cap = {
+	base = 0
+
+	# Размер галактики (ванильные значения)
+	modifier = {
+		set = 2
+		galaxy_size = tiny
+	}
+
+	modifier = {
+		set = 4
+		galaxy_size = small
+	}
+
+	modifier = {
+		set = 6
+		galaxy_size = medium
+	}
+
+	modifier = {
+		set = 8
+		galaxy_size = large
+	}
+
+	modifier = {
+		set = 10
+		galaxy_size = huge
+	}
+
+	# НАША ПРАВКА: вдвое ниже ванильного потолка.
+	# Калибровка: 0.5 = мягко, 0.33 = агрессивно, 0 = полный запрет.
+	modifier = {
+		factor = 0.5
+	}
+
+	# Сложность (ванильные множители)
+	modifier = {
+		divide = 2
+		is_difficulty = 0
+	}
+
+	modifier = {
+		divide = 1.5
+		is_difficulty = 1
+	}
+
+	# Captain
+	modifier = {
+		factor = 1.25
+		is_difficulty = 3
+	}
+
+	# Commodore
+	modifier = {
+		factor = 1.5
+		is_difficulty = 4
+	}
+
+	# Admiral
+	modifier = {
+		factor = 1.75
+		is_difficulty = 5
+	}
+
+	# Grand Admiral
+	modifier = {
+		factor = 2
+		is_difficulty = 6
+	}
+
+	# Void Dwellers сохраняют двойной кэп (их архетип)
+	modifier = {
+		factor = 2
+		has_void_dweller_origin = yes
+	}
+
+	round = yes
+	min = 1
+}

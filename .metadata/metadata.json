@@ -1,7 +1,7 @@
 {
 	"name": "AI Pop Optimizer - All in One",
 	"tags": ["Performance", "Balance", "Utilities"],
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"supported_game_version": "4.5.*",
 	"short_description": "Caps AI pops, compensates AI economy, reduces entity bloat. Single-player performance mod.",
 	"thumbnail_path": "thumbnail.png"
