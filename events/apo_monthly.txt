@@ -1,10 +1,9 @@
-# AI Pop Optimizer - events (vanilla 4.x format: typed event blocks)
+# AI Pop Optimizer - events (vanilla 4.5.x format)
 namespace = apo
 
 # Monthly pulse: iterate AI colonies (fired from on_actions)
 country_event = {
 	id = apo.1
-	hidden = yes
 	is_triggered_only = yes
 
 	immediate = {
@@ -20,7 +19,6 @@ country_event = {
 # Yearly recalculation of AI economy compensation
 country_event = {
 	id = apo.2
-	hidden = yes
 	is_triggered_only = yes
 
 	immediate = {
