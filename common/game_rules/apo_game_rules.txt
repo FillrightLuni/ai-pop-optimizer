@@ -1,0 +1,169 @@
+# AI Pop Optimizer — лимит суб-видов ИИ (ужесточение ванильного правила).
+#
+# В 4.x лаг порождают ПОП-ГРУППЫ (вид x страта x этика x фракция).
+# Каждый суб-вид, который ИИ создаёт генномодификацией, умножает
+# число групп на всех его планетах. Ванилла уже ограничивает ИИ
+# правилом can_modify_species (пороги 3 и 6 суб-видов); мы ужесточаем
+# их до 2 и 4. Ветки для игрока (is_ai = no) не тронуты.
+# Структура скопирована из ванильного common/game_rules/00_rules.txt
+# (дамп UPP 4.x), изменены только два числа.
+
+can_modify_species = {
+	root.owner = {
+		OR = {
+			is_ai = no
+			is_synthetic_empire = yes
+			count_exact_species = {
+				count < 2
+				limit = {
+					OR = {
+						is_same_species = prevprev
+						is_subspecies = prevprev
+					}
+					NOT = { has_trait = trait_self_modified }
+				}
+			}
+			AND = {
+				owner_species = { is_same_species = prevprev }
+				OR = {
+					has_ascension_perk = ap_engineered_evolution
+					has_ascension_perk = ap_the_flesh_is_weak
+				}
+			}
+			AND = {
+				OR = {
+					owner_species = { is_same_species = prevprev }
+					has_ascension_perk = ap_engineered_evolution
+					has_ascension_perk = ap_the_flesh_is_weak
+				}
+				has_technology = tech_gene_expressions
+				count_exact_species = {
+					count < 4
+					limit = {
+						OR = {
+							is_same_species = prevprev
+							is_subspecies = prevprev
+						}
+						NOT = { has_trait = trait_self_modified }
+					}
+				}
+			}
+		}
+	}
+	# Can't modify root Species during Ascension Situations
+	if = {
+		limit = {
+			is_same_species = ROOT
+		}
+		custom_tooltip = {
+			fail_text = "ASCENSION_SITUATION_ONGOING"
+
+			ROOT = {
+				NOT = {
+					any_situation = {
+						has_ascension_situation_ongoing = yes
+					}
+				}
+			}
+		}
+	}
+	# Organic Species
+	if = {
+		limit = {
+			OR = {
+				is_archetype = BIOLOGICAL
+				is_archetype = LITHOID
+			}
+			NOR = {
+				has_trait = trait_clone_soldier_infertile
+				has_trait = trait_clone_soldier_infertile_full_potential
+			}
+		}
+		custom_tooltip = {
+			fail_text = "NEEDS_GENE_TAILORING_OR_INTERGRATED_ANATOMY"
+			ROOT = {
+				OR = {
+					has_technology = tech_gene_tailoring
+					has_active_tradition = tr_cybernetics_integrated_anatomy
+					has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
+				}
+			}
+		}
+	}
+	# Clone Army
+	if = {
+		limit = {
+			OR = {
+				has_trait = trait_clone_soldier_infertile
+				has_trait = trait_clone_soldier_infertile_full_potential
+			}
+		}
+		custom_tooltip = {
+			fail_text = "NEEDS_GENE_TAILORING_AND_CLONE_SYNTHESIZATION"
+			ROOT = {
+				has_technology = tech_gene_tailoring
+				has_active_tradition = tr_cloning_somatic_synthesization_clone_army
+			}
+		}
+	}
+	# Robots & Machines
+	else_if = {
+		limit = {
+			OR = {
+				is_archetype = ROBOT
+				is_archetype = MACHINE
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					OR = {
+						AND = { ## organic trying to robomod
+							is_individual_machine = no
+							is_machine_empire = no
+						}
+						AND = { ## Machines with origins that delay them
+							OR = {
+								is_individual_machine = yes
+								is_machine_empire = yes
+							}
+							OR  = {
+								has_origin = origin_life_seeded
+								has_origin = origin_ocean_machines
+								has_origin = origin_void_machines
+								has_origin = origin_shattered_ring
+							}
+						}
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = "NEEDS_ROBOT_MODDING"
+
+				ROOT = {
+					OR = {
+						has_technology = tech_robomodding
+						has_technology = tech_robomodding_m
+					}
+				}
+			}
+		}
+	}
+	# Self-Modified
+	custom_tooltip = {
+		fail_text = "CANNOT_MODIFY_SELF_MODIFIED_SPECIES"
+		AND = {
+			NOT = {
+				has_trait = trait_self_modified
+			}
+			#is_same_species = root
+		}
+	}
+	# Malleable Genes
+	custom_tooltip = {
+		fail_text = "CANNOT_MODIFY_MALLEABLE_GENES_SPECIES"
+		NOT = {
+			has_trait = trait_malleable_genes
+		}
+	}
+}
