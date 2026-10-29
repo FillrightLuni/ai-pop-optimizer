@@ -1,0 +1,11 @@
+# AI Pop Optimizer — калибровочные константы
+# ВАЖНО: кастомные defines НЕ видны из триггеров/эффектов Stellaris —
+# это справочный файл для разработчика мода. Действующие цифры живут в:
+#   common/scripted_triggers/apo_triggers.txt   (кэп попов: count > N)
+#   common/static_modifiers/apo_static_modifiers.txt (бонусы компенсации)
+#   common/scripted_effects/apo_effects.txt      (пороги числа планет)
+
+APO_POP_CAP = 200
+APO_COMP_TIER1_PLANETS = 3
+APO_COMP_TIER2_PLANETS = 10
+APO_COMP_TIER3_PLANETS = 20

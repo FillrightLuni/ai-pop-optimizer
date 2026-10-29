@@ -1,0 +1,9 @@
+l_english:
+ apo_pop_growth_freeze:0 "Population Cap Reached"
+ apo_pop_growth_freeze_desc:0 "This planet has reached the population cap imposed by the AI Pop Optimizer. Growth is frozen."
+ apo_ai_econ_comp_1:0 "Optimized Economy I"
+ apo_ai_econ_comp_1_desc:0 "Streamlined economic management compensates for a smaller population."
+ apo_ai_econ_comp_2:0 "Optimized Economy II"
+ apo_ai_econ_comp_2_desc:0 "Streamlined economic management compensates for a smaller population."
+ apo_ai_econ_comp_3:0 "Optimized Economy III"
+ apo_ai_econ_comp_3_desc:0 "Streamlined economic management compensates for a smaller population."

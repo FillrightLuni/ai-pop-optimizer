@@ -1,0 +1,24 @@
+# AI Pop Optimizer — статические модификаторы
+
+# Заморозка роста на переполненной ИИ-планете
+apo_pop_growth_freeze = {
+	planet_pop_growth_speed = -1.0
+	planet_pop_assembly_organic_mult = -1.0
+	planet_pop_assembly_mechanical_mult = -1.0
+}
+
+# Трёхуровневая компенсация экономики ИИ (взамен ограниченных попов)
+apo_ai_econ_comp_1 = {
+	all_jobs_produce_mult = 0.10
+	pop_upkeep_mult = -0.10
+}
+
+apo_ai_econ_comp_2 = {
+	all_jobs_produce_mult = 0.20
+	pop_upkeep_mult = -0.20
+}
+
+apo_ai_econ_comp_3 = {
+	all_jobs_produce_mult = 0.30
+	pop_upkeep_mult = -0.30
+}

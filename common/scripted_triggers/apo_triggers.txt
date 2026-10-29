@@ -1,0 +1,12 @@
+# AI Pop Optimizer — scripted triggers
+
+# Страна — ИИ (не игрок)
+apo_is_ai_country = {
+	is_ai = yes
+}
+
+# Планета ИИ, где число попов превысило кэп.
+# Кэп настраивается здесь (перекалибровка = правка одной цифры).
+apo_is_over_pop_cap = {
+	pop_count > 200
+}

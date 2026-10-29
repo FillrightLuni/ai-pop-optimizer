@@ -1,0 +1,12 @@
+# AI Pop Optimizer — хуки событий
+on_monthly_pulse = {
+	events = [
+		{ event = apo.1 }
+	]
+}
+
+on_yearly_pulse = {
+	events = [
+		{ event = apo.2 }
+	]
+}
